@@ -1,5 +1,5 @@
 from flask import Flask, redirect, url_for, render_template
-
+from tamuhack2021_angryindiangamers import script
 app = Flask(__name__)
 
 @app.route("/")
@@ -13,8 +13,6 @@ def about():
 @app.route("/predict/")
 def predict():
     return "Predict"
-
-
 
 
 if __name__ == "__main__":
