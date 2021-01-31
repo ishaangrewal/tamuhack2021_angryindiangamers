@@ -3,16 +3,7 @@ from tamuhack2021_angryindiangamers import script
 
 app = Flask(__name__)
 
-weight = None
-height = None
-age = None
-sex = None
-cholesterol = None
-excercise = None
-glucose = None
-diastolic = None
-systolic = None
-
+final = None
 
 @app.route("/")
 def home():
@@ -25,9 +16,29 @@ def about():
 @app.route("/predict/", methods=["POST", "GET"])
 def predict():
     if request.method == "POST":
-
+        weight = request.form["weight"]
+        height = request.form["height"]
+        age = request.form["age"]
+        sex = request.form["sex"]
+        cholesterol = request.form["cholesterol"]
+        glucose = request.form["gluc"]
+        diastolic = request.form["diastolic"]
+        systolic = request.form["systolic"]
+        smoke = request.form["smoke"]
+        alcohol = request.form["alch"]
+        active = request.form["active"]
+        global final
+        final = [age, sex, height, weight, systolic, diastolic, cholesterol, glucose, smoke, alcohol, active]
+        final = [float(x) for x in final]
+        return redirect(url_for("predictions"))
     else:
-        render_template("predict.html")
+        return render_template("predict.html")
+
+@app.route("/predictions/")
+def predictions():
+    val = script.predict_cardiovscular(final)
+    return str(val)
+
 
 
 if __name__ == "__main__":

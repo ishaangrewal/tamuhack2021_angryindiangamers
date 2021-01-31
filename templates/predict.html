@@ -1,10 +1,44 @@
 <html>
 <form action="#", method="post">
-	<input type = 'text' placeholder="Age"><br><br>
-	<input type = 'text' placeholder="Gender"><br><br>
-	<input type = 'text' placeholder="Cholesterol"><br><br>
-	<input type = 'text' placeholder="Alcohol"><br><br>
-	<input type = 'text' placeholder="Smoke"><br><br>
+	<input type = 'number' name = "age" placeholder="Age"><br><br>
+	Sex<br>
+	<input type="radio" id="male" name="sex" value="2">
+  <label for="male">Male</label>
+  <input type="radio" id="female" name="sex" value="1">
+  <label for="female">Female</label><br><br>
+  cholesterol<br>
+<input type="radio" id="low" name="cholesterol" value="1">
+  <label for="low">Normal/Low</label>
+  <input type="radio" id="high" name="cholesterol" value="2">
+  <label for="high">High</label>
+  <input type="radio" id="very_high" name="cholesterol" value="3">
+  <label for="very_high">Very High</label><br><br>
+  alch <br>
+<input type="radio" id="yes" name="alch" value="1">
+	<label for="male">Yes</label>
+  <input type="radio" id="no" name="alch" value="0">
+  <label for="yes">No</label><br><br>
+  smoke <br>
+	<input type="radio" id="syes" name="smoke" value="1">
+  <label for="syes">Yes</label>
+  <input type="radio" id="sno" name="smoke" value="0">
+  <label for="sno">No</label><br><br>
+  active <br>
+<input type="radio" id="ayes" name="active" value="1">
+  <label for="ayes">Yes</label>
+  <input type="radio" id="ano" name="active" value="0">
+  <label for="ano">No</label><br><br>
+  glucose <br>
+	<input type="radio" id="low" name="gluc" value="1">
+  <label for="low">Normal or Low</label>
+  <input type="radio" id="high" name="gluc" value="2">
+  <label for="high">High</label>
+  <input type="radio" id="very_high" name="gluc" value="3">
+  <label for="very_high">Very High</label><br><br>
+	<input type = 'number' name="systolic" placeholder="systolic"><br><br>
+	<input type = 'number' name="diastolic" placeholder="diastolic"><br><br>
+	<input type = 'number' name="height" placeholder="height"><br><br>
+	<input type = 'number' name="weight" placeholder="weight"><br><br>
 	<button type = "submit"> Predict</button>
 </form>
 </html>

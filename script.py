@@ -30,11 +30,10 @@ rf = RandomForestRegressor(n_estimators=100, random_state=0)
 rf.fit(x_train, y_train)
 print("Regression Model Complete")
 
-def predict_cardiovscular(*columns):
+def predict_cardiovscular(columns):
     arr = [columns]
-    arr[0] = columns
     prediction = rf.predict(arr)
-    return prediction[0][0]
+    return prediction[0]
 
 
 if __name__ == "__main__":
