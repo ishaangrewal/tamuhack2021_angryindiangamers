@@ -10,7 +10,7 @@ def home():
 def about():
     return "About"
 
-@app.route("/predit/")
+@app.route("/predict/")
 def predict():
     return "Predict"
 
