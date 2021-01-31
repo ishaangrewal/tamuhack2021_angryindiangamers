@@ -11,7 +11,7 @@ def home():
 
 @app.route("/about/")
 def about():
-    return "About"
+    return render_template("about.html")
 
 @app.route("/predict/", methods=["POST", "GET"])
 def predict():
