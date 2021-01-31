@@ -31,51 +31,52 @@ rf.fit(x_train, y_train)
 print("Regression Model Complete")
 
 def predict_cardiovscular(*columns):
-    arr = []
+    arr = [columns]
     arr[0] = columns
     prediction = rf.predict(arr)
     return prediction[0][0]
 
 
-# predict test data
-predictions = rf.predict(x_test)
-print("Regression Prediction Complete")
+if __name__ == "__main__":
+    # predict test data
+    predictions = rf.predict(x_test)
+    print("Regression Prediction Complete")
 
-# spit results into w/ cardio disease and w/o cardio disease
-results = pd.DataFrame()
-results['Actual'] = y_test
-results['Prediction'] = predictions
-results_0 = results[results['Actual'] == 0]
-size_0 = len(results_0.index)
-results_1 = results[results['Actual'] == 1]
-size_1 = len(results_1.index)
-
-
-# initialize subplots
-fig, ((ax1), (ax2)) = plt.subplots(1, 2, figsize=(20, 10))
-
-fig.suptitle("Distribution of Cardiovascular Disease Predictions")
-
-# Plot 1 for patients without cardio disease
-ax1.set_title("Distribution of Predictions for Patients w/o Cardiovascular Disease")
-ax1.set_xlabel("Predicted Chance of Cardiovascular Disease")
-ax1.set_ylabel("Relative Frequency")
-ax1.set_xlim(0, 1)
-counts_0, bins_0 = np.histogram(results_0["Prediction"], bins=20)
-counts_0 = counts_0 / size_0
-ax1.hist(bins_0[:-1], bins_0, weights=counts_0, color='green', edgecolor='black', linewidth=1.2)
-
-# Plot 2 for patients with cardio disease
-ax2.set_title("Distribuution of Predictions for Patients w/ Cardiovascular Disease")
-ax2.set_xlabel("Predicted Chance of Cardiovascular Disease")
-ax2.set_ylabel("Relative Frequency")
-ax2.set_xlim(0, 1)
-counts_1, bins_1 = np.histogram(results_1["Prediction"], bins=20)
-counts_1 = counts_1 / size_1
-ax2.hist(bins_1[:-1], bins=bins_1, weights=counts_1, color='red', edgecolor='black', linewidth=1.2)
+    # spit results into w/ cardio disease and w/o cardio disease
+    results = pd.DataFrame()
+    results['Actual'] = y_test
+    results['Prediction'] = predictions
+    results_0 = results[results['Actual'] == 0]
+    size_0 = len(results_0.index)
+    results_1 = results[results['Actual'] == 1]
+    size_1 = len(results_1.index)
 
 
-plt.show()
+    # initialize subplots
+    fig, ((ax1), (ax2)) = plt.subplots(1, 2, figsize=(20, 10))
+
+    fig.suptitle("Distribution of Cardiovascular Disease Predictions")
+
+    # Plot 1 for patients without cardio disease
+    ax1.set_title("Distribution of Predictions for Patients w/o Cardiovascular Disease")
+    ax1.set_xlabel("Predicted Chance of Cardiovascular Disease")
+    ax1.set_ylabel("Relative Frequency")
+    ax1.set_xlim(0, 1)
+    counts_0, bins_0 = np.histogram(results_0["Prediction"], bins=20)
+    counts_0 = counts_0 / size_0
+    ax1.hist(bins_0[:-1], bins_0, weights=counts_0, color='green', edgecolor='black', linewidth=1.2)
+
+    # Plot 2 for patients with cardio disease
+    ax2.set_title("Distribuution of Predictions for Patients w/ Cardiovascular Disease")
+    ax2.set_xlabel("Predicted Chance of Cardiovascular Disease")
+    ax2.set_ylabel("Relative Frequency")
+    ax2.set_xlim(0, 1)
+    counts_1, bins_1 = np.histogram(results_1["Prediction"], bins=20)
+    counts_1 = counts_1 / size_1
+    ax2.hist(bins_1[:-1], bins=bins_1, weights=counts_1, color='red', edgecolor='black', linewidth=1.2)
+
+
+    plt.show()
 
 
 
