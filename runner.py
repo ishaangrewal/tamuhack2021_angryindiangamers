@@ -36,10 +36,8 @@ def predict():
 
 @app.route("/predictions/")
 def predictions():
-    val = script.predict_cardiovscular(final)
-    return str(val)
-
-
+    val = str(script.predict_cardiovscular(final))
+    return render_template("prediction.html", val=val)
 
 if __name__ == "__main__":
     app.run(debug=True)
