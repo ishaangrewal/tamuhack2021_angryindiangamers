@@ -18,19 +18,23 @@ df['age'] = df['age']/365
 x = df.drop(["cardio"], axis=1)
 y = df["cardio"]
 
-#corr = x.corr()
+corr = x.corr()
 #sns.heatmap(corr, xticklabels=corr.columns, yticklabels=corr.columns, annot=True)
 
+
+# split data
 x_train, x_test, y_train, y_test= train_test_split(x, y, test_size= 0.2, random_state=0)
+
+# regression model
 rf = RandomForestRegressor(n_estimators=100, random_state=0)
 rf.fit(x_train, y_train)
-
 print("Regression Model Complete")
 
-
+# predict test data
 predictions = rf.predict(x_test)
 print("Regression Prediction Complete")
 
+# spit results into w/ cardio disease and w/o cardio disease
 results = pd.DataFrame()
 results['Actual'] = y_test
 results['Prediction'] = predictions
@@ -39,6 +43,8 @@ size_0 = len(results_0.index)
 results_1 = results[results['Actual'] == 1]
 size_1 = len(results_1.index)
 
+
+# initialize subplots
 fig, ((ax1), (ax2)) = plt.subplots(1, 2, figsize=(20, 10))
 
 fig.suptitle("Distribution of Cardiovascular Disease Predictions")
